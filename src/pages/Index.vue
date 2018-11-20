@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    Pronto... Chef Now!
+    Pronto... Chef Now!!!
   </q-page>
 </template>
 
