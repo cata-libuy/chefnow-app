@@ -1,41 +1,43 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf"
+  >
     <q-layout-header>
       <q-toolbar
-        color="primary"
-        :glossy="$q.theme === 'mat'"
-        :inverted="$q.theme === 'ios'"
+        color = "black"
+        :glossy = "$q.theme === 'mat'"
+        :inverted = "$q.theme === 'ios'"
       >
-        <q-btn
-          flat
-          dense
-          round
-          @click="leftDrawerOpen = !leftDrawerOpen"
-          aria-label="Menu"
+        <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
+          <q-icon name="account_box" />
+        </q-btn
         >
-          <q-icon name="menu" />
-        </q-btn>
-
-        <q-toolbar-title>
-          Chef Now
+        <q-toolbar-title class="flex flex-center">
+          <div class="row">
+            <div class="col-sm-6"> <img src="assets/icon/chefHeader.png" alt="" width="45" height="45"> </div>
+            <div class="col-sm-6"> <font face = "Pacifico">Chef Now</font></div>
+          </div>
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
 
     <q-layout-drawer
       v-model="leftDrawerOpen"
-      :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
-    >
-      <q-list
-        no-border
-        link
-        inset-delimiter
+      :content-class="$q.theme === 'mat' ? 'bg-grey3' : null"
       >
-        <q-list-header>Essential Links</q-list-header>
-        <q-item @click.native="openURL('http://quasar-framework.org')">
-          <q-item-side icon="school" />
-          <q-item-main label="Ejemplo de menu" sublabel="quasar-framework.org" />
-        </q-item>
+      <q-list no-border link inset-delimiter>
+        <div><q-list-header>Usuario <br/> nombre.apellido@dominio.cl</q-list-header><br/><br/><br/>
+        </div>
+        <div>
+          <q-item-side icon="restaurant_menu"> Recetas </q-item-side><br/>
+          <q-item-side icon="person"> Perfil </q-item-side><br/>
+          <q-item-side icon="kitchen"> Despensa </q-item-side>
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        </div>
+        <div class="q-body-2">
+          <q-item-main label="Preferencias"/><br/>
+          <q-item-main label="Contáctanos"/><br/>
+          <q-item-main label="Cerrar Sesión"/><br/>
+        </div>
       </q-list>
     </q-layout-drawer>
 
