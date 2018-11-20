@@ -7,6 +7,13 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
     ],
   },
+  {
+    path: '/recetas',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/ListaRecetas.vue') },
+    ],
+  },
 ];
 
 // Always leave this as last one
