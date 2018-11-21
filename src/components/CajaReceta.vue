@@ -1,7 +1,7 @@
 <template>
   <div class="caja-receta">
     <h2>{{ receta.titulo }}</h2>
-    <p>{{ receta.cuerpo }}</p>
+    <p>{{ this.minifyBody(receta.cuerpo) }}</p>
   </div>  
 </template>
 
@@ -11,6 +11,11 @@ export default {
   props: ['receta'],
   created() {
     console.log('recibí una receta', this.receta);
+  },
+  methods: {
+    minifyBody(text) {
+      return text.substr(0, 10);
+    }
   }
 }
 </script>

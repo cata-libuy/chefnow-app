@@ -64,4 +64,9 @@ export default {
 </script>
 
 <style>
+.q-layout-page-container {
+  background-image: url('../assets/Principal3.jpg');
+  background-size: cover;
+  min-height: 90vw;
+}
 </style>

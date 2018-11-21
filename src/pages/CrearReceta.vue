@@ -10,8 +10,6 @@
     <q-input class="" suffix="Horas" float-label="tiempo de duración" type="number" />
     <q-input class="" prefix="Minutos" float-label="tiempo de duración" type="number" />
     <q-input class="" value="0" stack-label="Porciones" />
-
-    <img src="assets/Principal3.jpg" class="responsive">
   </q-page>
 </template>
 
