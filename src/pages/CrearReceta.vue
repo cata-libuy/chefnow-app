@@ -1,11 +1,10 @@
 <template>
-  <!-- <q-page class="flex flex-center "> -->
 
   <q-page class="flex column justify-content">
 
     <h3 class="self-center">Crear Receta</h3>
 
-    <div class="flex column fondo" > <!--flex column justify-around -->
+    <div class="flex column justify-around formularioReceta" >
 
       <q-input float-label="Título de receta"
                type="text"
@@ -15,30 +14,19 @@
                type="textarea"
                v-model="receta.cuerpo"/>
 
-      <span class="flex row">
-        <q-input class="col"
-                 suffix="Horas"
-                 float-label="tiempo de duración"
-                 type="number"
-                 v-model="receta.tiempoPreparacion.hora"
-                 min="0"
+      <span class="row">
+        <q-input class="col-5" suffix="hh:mm"
+                 float-label="tiempo de preparación"
+                 type="time"
+                 v-model="receta.tiempoPreparacion"
                  numeric-keyboard-toggle/>
-
-        <q-input class="col"
-                 suffix="Minutos"
-                 float-label="tiempo de duración"
+        <span class="col-1"></span>
+        <q-input class="col-5" value="0"
+                 stack-label="Porciones"
+                 v-model="receta.porcion"
                  type="number"
-                 v-model="receta.tiempoPreparacion.minuto"
-                 min="0"
-                 max="59"
                  numeric-keyboard-toggle/>
       </span>
-
-      <q-input value="0"
-               stack-label="Porciones"
-               v-model="receta.porcion"
-               type="number"
-               numeric-keyboard-toggle/>
 
       <q-btn class="self-center" icon="create"
              label="Guardar Receta"
@@ -56,10 +44,7 @@
         receta: {
           titulo: '',
           cuerpo: '',
-          tiempoPreparacion: {
-            hora: 0,
-            minuto: 0
-          },
+          tiempoPreparacion: '00:00',
           porcion: 0,
         }
       }
@@ -68,13 +53,11 @@
 </script>
 
 <style>
-  .fondo{
+  .formularioReceta{
     background-color: #fdfbff;
     padding: 1.3em;
     border-radius: 0.5em;
     margin: 3%;
-  }
-  .item{
-    margin-bottom: 2%;
+    height: 50vh;
   }
 </style>
