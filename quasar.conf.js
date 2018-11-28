@@ -58,7 +58,9 @@ module.exports = function(ctx) {
                 'QItemMain',
                 'QItemSide',
                 'QParallax',
-                'QLayoutFooter'
+                'QLayoutFooter',
+                'QUploader'
+
             ],
             directives: [
                 'Ripple'
