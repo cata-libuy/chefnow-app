@@ -18,3 +18,8 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+# App Cordova y firma
+src-cordova/ChefNow.apk
+src-cordova/my-release-key.keystore
+src-cordova/my-release-key.keystore.old
