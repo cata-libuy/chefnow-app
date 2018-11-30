@@ -59,7 +59,6 @@ module.exports = function(ctx) {
                 'QItemSide',
                 'QParallax',
                 'QLayoutFooter',
-<<<<<<< HEAD
                 'QCard',
                 'QCardTitle',
                 'QCardMain',
@@ -73,11 +72,8 @@ module.exports = function(ctx) {
                 'QFab',
                 'QFabAction',
                 'QBtnDropdown',
-                'QCollapsible'
-=======
+                'QCollapsible',
                 'QUploader'
-
->>>>>>> 5545ca9848046840132ec01079cf71f14eef15c5
             ],
             directives: [
                 'Ripple',
