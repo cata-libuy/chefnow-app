@@ -2,9 +2,8 @@
 
   <q-page class="flex column justify-content">
 
-    <h3 class="self-center">Crear Receta</h3>
-
     <div class="flex column wrap justify-around formularioReceta" >
+      <h4 class="self-center">Crear Receta</h4>
 
       <q-input float-label="Título de receta"
                type="text"
@@ -28,11 +27,16 @@
                  numeric-keyboard-toggle/>
       </span>
 
-      <q-uploader url="localhost:3000/receta/imagen" 
-                  name="imagen" 
-                  extensions=".jpg,.jpeg,.png"
-                  :hide-upload-button="true"
-                  :auto-expand="true"/>
+      <q-uploader
+                url="http://localhost:3000/receta/imagen"
+                name="imagen"
+                extensions=".jpg,.jpeg,.png"
+                :hide-upload-button="true"
+                :auto-expand="true"
+                float-label="Sube la foto de tu receta!"
+                :clearable="true"
+                ref="imagenReceta"
+                @uploaded="uploaded"/>
 
       <q-btn class="self-center" icon="create"
              label="Guardar Receta"
@@ -53,35 +57,39 @@
           cuerpo: '',
           tiempoPreparacion: '00:00',
           porcion: 0,
-        }
+          url: './uploads/',
+        },
       }
     },methods: {
-      guardarReceta(){
-        const url = 'https://chef-now-api.herokuapp.com/receta';
+      uploaded(event, xhr) {   //cuándo ya se subió la imagen
+        //recibo la ruta de la imagen nueva.
+        let response = JSON.parse(xhr.response);
+        this.receta.url += response.filename.toString();
 
-        //guardar la imagen y guardar su ruta
+        /*const url = 'https://chef-now-api.herokuapp.com/receta';*/
+        const url = 'http://localhost:3000/receta';
 
-        
         //guardar receta
         let tiempo = this.receta.tiempoPreparacion.split(':');
-        let hora = Number(tiempo[0])*60;
+        let hora = Number(tiempo[0]) * 60;
         let minuto = Number(tiempo[1]);
-
-        let preparacion = hora+minuto;
+        let preparacion = hora + minuto;
 
         axios.post(url, {
           titulo: this.receta.titulo,
           cuerpo: this.receta.cuerpo,
           tiempoPreparacion: preparacion,
           porcion: this.receta.porcion,
+          imagenPrincipal: this.receta.url
         })
           .then(
-            (response) => {
-              console.log('se guardó la data', response.data);
-            }
+            (response) => { console.log('se guardó la data', response.data); }
           )
           .catch((err) => console.log('hubo un error', err));
-
+      },
+      guardarReceta() {
+        //guardar imagen de la receta.
+        this.$refs.imagenReceta.upload();
       }
     }
   };
@@ -90,9 +98,10 @@
 <style>
   .formularioReceta{
     background-color: #fdfbff;
-    padding: 1.3em;
+    padding-right: 1.3em;
+    padding-left: 1.3em;
+    padding-bottom: 1.4em;
     border-radius: 0.5em;
     margin: 3%;
-    /* height: 50vh; */
   }
 </style>

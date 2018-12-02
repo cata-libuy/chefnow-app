@@ -35,9 +35,9 @@
       <br />
 
       <q-list separator>
-        <q-collapsible indent icon="restaurant_menu" label="Resetas" sublabel="">
+        <q-collapsible indent icon="restaurant_menu" label="Recetas" sublabel="">
           <div><q-item-side icon="receipt"> <router-link to=""> Mis Recetas </router-link></q-item-side></div>
-          <div><q-item-side icon="receipt"> <router-link to=""> Crear Receta </router-link></q-item-side></div>
+          <q-item-side icon="receipt"> <router-link to="/crear-receta"> Crear Receta </router-link></q-item-side>
         </q-collapsible>
 
         <q-collapsible indent icon="kitchen" label="Despensa" sublabel="">
