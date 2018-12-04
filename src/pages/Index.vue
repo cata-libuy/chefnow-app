@@ -1,24 +1,31 @@
 <template>
-<div class="row">
+<div class="row search">
   <div class="col-1"/>
-  <div class="col-9"><q-input v-model="buscar" float-label="Buscar Receta:" /></div>
+  <div class="col-9 search-input"><q-input v-model="buscar" float-label="Buscar Receta:" /></div>
   <div class="col-2">
     <q-btn class="search" round color="secondary" @click="enviarBuscar">
       <q-icon name="search" />
+    </q-btn>
+    <q-btn color="standard" @click="limpiarBusqueda">
+      <q-icon name="close" />
     </q-btn>
   </div>
   <lista-recetas :recetas="recetas"></lista-recetas>
 </div>
 </template>
 
-<style>
+<style scoped>
 .search {
   position: relative;
   text-align: center;
   font-size: medium;
+  color: white;
 }
 .col {
   text-align: center;
+}
+.q-if-label {
+  color: white !important;
 }
 </style>
 
@@ -46,7 +53,11 @@ export default {
         }
       )
       .catch((err) => console.log('hubo un error'));
-      }
+      },
+    limpiarBusqueda() {
+      this.buscar = '';
+      this.enviarBuscar();
+    },
   },
 
   created() {
