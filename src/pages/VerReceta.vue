@@ -1,39 +1,54 @@
 <template>
     <q-page class="flex column justify-content">
-      <div class="formularioRecetaCR">
-      <br />
-      <q-card-title class="flex column center">
-        <div class="row">
-          <div class="col-1"><q-icon name="account_box" /></div>
-          <div class="col-11"> {{receta.titulo}} </div>
-        </div>
-        <div>
-          <img :src="`https://chef-now-api.herokuapp.com/receta/imagen/${receta.imagenPrincipal}`" class="ImgResponsiveVR">
-        </div>
-        <div class="row">
-          <q-rating slot="subtitle" :max= "5" />
-        </div>
-      </q-card-title>
+      <br /><br />
 
-      <q-card-main>
-        <div class="flex justify-around">
-          <p class="text-faded" style="width: 90%">{{receta.cuerpo}}</p>
-        </div>
-      
-        <div class="row" align=center>
-          <div class="col-6">Tiempo Preparacion</div>
-          <div class="col-6">Porciones</div>
-        </div>
+      <div class="formularioRecetaVR">
+        <q-card-title class="flex column center">
+          <div class="row">
+            <div class="col-1"><q-icon name="account_box" /></div>
+            <div class="col-11"> {{receta.titulo}} </div>
+          </div>
+          <div>
+            <img :src="`https://chef-now-api.herokuapp.com/receta/imagen/${receta.imagenPrincipal}`" class="ImgResponsiveVR">
+          </div>
+        </q-card-title>
 
-        <div class="row" align=center>
-          <div class="col-6">{{ minutosAHora(receta.tiempoPreparacion) }}</div>
-          <div class="col-6">{{receta.porcion}}</div>
-        </div>
-      </q-card-main>
-      <br />
+        <q-card-main>
+          <div class="flex justify-around">
+            <p class="text-faded" style="width: 90%">{{receta.cuerpo}}</p>
+          </div>
+
+          <div class="row">
+            <div class="col-12"><q-rating slot="subtitle" :max= "5" /></div>
+          </div>
+
+          <br /><br />
+
+          <!-- <div class="row">
+            <div class="col-4">Tiempo Preparacion</div>
+            <div class="col-4">Porciones</div>
+          </div> 
+          <br />-->
+
+          <div class="row">
+            <div class="col-4"><q-btn flat round dense icon="access_time"> {{ minutosAHora(receta.tiempoPreparacion) }} </q-btn></div>
+            <div class="col-4"><q-btn flat round dense icon="pie_chart"> {{ receta.porcion }} </q-btn></div>
+            <div class="col-4"><q-btn color="primary" label="Ver Receta" /></div>
+          </div>
+
+          <!-- <div class="row">
+            <div class="col-4">{{ minutosAHora(receta.tiempoPreparacion) }}</div>
+            <div class="col-4">{{receta.porcion}}</div>
+          </div><br/>
+          <div class="row">
+            <div class="col-9"/>
+            <div class="col-3"><q-btn color="primary" label="Comentar" /></div>
+          </div> -->
+        </q-card-main>
+ 
       </div>
+      <br /><br />
     </q-page>
-
 </template>
 
 <script>
@@ -89,14 +104,17 @@ export default {
     background-color: #fdfbff;
     margin-top: 5%;
     /*border-radius: 1em;*/
-    /* opacity: 0.8; */
+    opacity: 0.9;
+    text-align: center;
   }
 
   .ImgResponsiveVR {
     width: 100%;
     height: auto;
   }
+
   .text-faded{
     text-align: justify;
   }
+
 </style>

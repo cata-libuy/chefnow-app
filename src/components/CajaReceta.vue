@@ -1,37 +1,39 @@
 <template>
+  <div class="formularioRecetaCR">
+    
+    <q-card-title class="flex column center">
+      <div class="row">
+        <div class="col-1"><q-icon name="account_box" /> </div>
+        <div class="col-11">{{receta.titulo}}</div>
+      </div>
+      <div>
+        <img :src="`https://chef-now-api.herokuapp.com/receta/imagen/${receta.imagenPrincipal}`" class="ImgResponsiveCR">
+      </div>
+      <div class="row">
+        <div class="12"><q-rating slot="subtitle" :max= "5" /></div>
+      </div>
+    </q-card-title>
 
-  <div class="formularioRecetaCR" >
-      <q-card-title class="flex column content-center" >
-        <div>
-          {{receta.titulo}} <q-icon name="account_box" />
-        </div>
-        <div>
-          <img :src="`https://chef-now-api.herokuapp.com/receta/imagen/${receta.imagenPrincipal}`" class="ImgResponsiveCR">
-        </div>
-        <div>
-          <q-rating slot="subtitle" :max= "5" />
-        </div>
-      </q-card-title>
-
-      <q-card-main>
-        <p class="text-faded">{{ minifyBody(receta.cuerpo) }}</p>
-      </q-card-main>
-
-      <q-card-actions>
-        <q-btn flat round dense icon="access_time"> {{ minutosAHora(receta.tiempoPreparacion) }} </q-btn>
-        <q-btn flat round dense icon="pie_chart"> {{ receta.porcion }} </q-btn>
-        <q-btn flat color="primary">
+    <q-card-main>
+      <div class="flex justify-around">
+        <p class="text-faded" style="width: 90%">{{ minifyBody(receta.cuerpo) }}</p>
+      </div>
+      <div class="row">
+        <div class="col-4"><q-btn flat round dense icon="access_time"> {{ minutosAHora(receta.tiempoPreparacion) }} </q-btn></div>
+        <div class="col-4"><q-btn flat round dense icon="pie_chart"> {{ receta.porcion }} </q-btn></div>
+        <div class="col-4">
           <router-link :to="`ver-receta/${receta._id}`">
-            Ver Receta
+            <q-btn @click="noMessage" color="primary" label="Ver Receta" />
           </router-link>
-        </q-btn>
-      </q-card-actions>
+        </div>
+      </div>
+    </q-card-main>
   </div>
-
 </template>
 
 <script>
 import axios from 'axios';
+import { QSpinnerFacebook, QSpinnerGears } from 'quasar'
 export default {
   name: 'CajaReceta',
   props: ['receta'],
@@ -42,7 +44,7 @@ export default {
   },
   methods: {
     minifyBody(text) {
-      return text.substr(0, 40);
+      return text.substr(0, 70);
     },
     minutosAHora(min){
       let hora = Math.trunc(min/60);
@@ -55,9 +57,19 @@ export default {
         minuto='0'+minuto
       }
       return`${hora}:${minuto}`;
+    },
+    show (options) {
+      this.$q.loading.show(options)
+      setTimeout(() => {
+        this.$q.loading.hide()
+      }, 1000)
+    },
+    noMessage () {
+      this.show()
     }
   }
 }
+
 </script>
 
 <style>
@@ -65,12 +77,16 @@ export default {
     background-color: #fdfbff;
     margin-top: 5%;
     /*border-radius: 1em;*/
-    /* opacity: 0.8; */
+    opacity: 0.9;
+    position: relative;
+    text-align: center;
   }
   .ImgResponsiveCR {
     width: 100%;
     height: auto;
     opacity: 1;
   }
-
+  .text-faded{
+    text-align: justify;
+  }
 </style>
