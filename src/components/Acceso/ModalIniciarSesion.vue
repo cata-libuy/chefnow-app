@@ -47,7 +47,9 @@ export default {
   watch: {
     loginError(message) {
       if (message) {
-        this.$q.notify({ message, type: 'negative', position: top })
+        console.log('notifying', message);
+        alert(message)
+        // this.$q.notify({ message, type: 'negative', position: top })
       }
     },
     user(userData) {

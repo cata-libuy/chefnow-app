@@ -16,6 +16,12 @@ export const login = ({ commit, state }, userData) => {
             const { user } = response.data;
             user.token = response.data.token;
             commit('SET_USER', { user });
+            console.log('get profile');
+            axios.get(`${settings.api}/usuario/${user._id}`)
+              .then((res) => {
+                console.log('profile', res.data);
+                commit('SET_USER', { user: res.data && res.data.usuario ? res.data.usuario : user });
+              });
           } else {
             let message = defaultErrorMessage;
             commit('SET_LOGIN_ERROR', { message });
@@ -42,7 +48,7 @@ export const restoreUser = ({ commit, state }) => {
     console.log('intentando recuperar usuario de local storage');
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
-      commit('SET_USER', { user })
+      commit('SET_USER', { user });
     }
   }
 }

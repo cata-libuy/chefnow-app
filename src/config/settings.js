@@ -1,6 +1,6 @@
 // Exporta variables de configuración
 const settings = {
-  api: process.env.BASE_API || 'http://localhost:3000'
+  api: process.env.BASE_API || 'https://chef-now-api.herokuapp.com'
 };
 
 export default settings;
