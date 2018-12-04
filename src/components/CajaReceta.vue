@@ -1,12 +1,12 @@
 <template>
 
   <div class="formularioRecetaCR" >
-      <q-card-title class="flex column center" >
+      <q-card-title class="flex column content-center" >
         <div>
           {{receta.titulo}} <q-icon name="account_box" />
         </div>
         <div>
-          <img src="../assets/Principal5.jpg" class="ImgResponsiveCR">
+          <img :src="`https://chef-now-api.herokuapp.com/receta/imagen/${receta.imagenPrincipal}`" class="ImgResponsiveCR">
         </div>
         <div>
           <q-rating slot="subtitle" :max= "5" />
@@ -18,7 +18,7 @@
       </q-card-main>
 
       <q-card-actions>
-        <q-btn flat round dense icon="access_time"> {{ receta.tiempoPreparacion }} </q-btn>
+        <q-btn flat round dense icon="access_time"> {{ minutosAHora(receta.tiempoPreparacion) }} </q-btn>
         <q-btn flat round dense icon="pie_chart"> {{ receta.porcion }} </q-btn>
         <q-btn flat color="primary">
           <router-link :to="`ver-receta/${receta._id}`">
@@ -43,6 +43,18 @@ export default {
   methods: {
     minifyBody(text) {
       return text.substr(0, 40);
+    },
+    minutosAHora(min){
+      let hora = Math.trunc(min/60);
+      let minuto = (min%60);
+
+      if( hora.toString().length == 1 ){
+        hora='0'+hora
+      }
+      if( minuto.toString().length == 1 ){
+        minuto='0'+minuto
+      }
+      return`${hora}:${minuto}`;
     }
   }
 }
@@ -58,7 +70,7 @@ export default {
   .ImgResponsiveCR {
     width: 100%;
     height: auto;
-    opacity: none;
+    opacity: 1;
   }
 
 </style>

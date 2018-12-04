@@ -8,7 +8,7 @@
           <div class="col-11"> {{receta.titulo}} </div>
         </div>
         <div>
-          <img src="../assets/Principal5.jpg" class="ImgResponsiveVR">
+          <img :src="`https://chef-now-api.herokuapp.com/receta/imagen/${receta.imagenPrincipal}`" class="ImgResponsiveVR">
         </div>
         <div class="row">
           <q-rating slot="subtitle" :max= "5" />
@@ -16,8 +16,8 @@
       </q-card-title>
 
       <q-card-main>
-        <div>
-          <p class="text-faded">{{receta.cuerpo}}</p>
+        <div class="flex justify-around">
+          <p class="text-faded" style="width: 90%">{{receta.cuerpo}}</p>
         </div>
       
         <div class="row" align=center>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="row" align=center>
-          <div class="col-6">{{receta.tiempoPreparacion}}</div>
+          <div class="col-6">{{ minutosAHora(receta.tiempoPreparacion) }}</div>
           <div class="col-6">{{receta.porcion}}</div>
         </div>
       </q-card-main>
@@ -64,6 +64,18 @@ export default {
         }
       )
       .catch((err) => console.log('hubo un error'));
+    },
+    minutosAHora(min){
+      let hora = Math.trunc(min/60);
+      let minuto = (min%60);
+
+      if( hora.toString().length == 1 ){
+        hora='0'+hora
+      }
+      if( minuto.toString().length == 1 ){
+        minuto='0'+minuto
+      }
+      return`${hora}:${minuto} hh:mm`;
     }
   },
   created(){

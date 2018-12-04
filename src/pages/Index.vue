@@ -25,6 +25,7 @@
 <script>
 import axios from 'axios';
 import ListaRecetas from '../components/ListaRecetas.vue';
+
 export default {
   name: 'PageIndex',
  data() {
