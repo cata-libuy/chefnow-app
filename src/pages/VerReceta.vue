@@ -24,26 +24,12 @@
 
           <br /><br />
 
-          <!-- <div class="row">
-            <div class="col-4">Tiempo Preparacion</div>
-            <div class="col-4">Porciones</div>
-          </div> 
-          <br />-->
-
           <div class="row">
             <div class="col-4"><q-btn flat round dense icon="access_time"> {{ minutosAHora(receta.tiempoPreparacion) }} </q-btn></div>
             <div class="col-4"><q-btn flat round dense icon="pie_chart"> {{ receta.porcion }} </q-btn></div>
-            <div class="col-4"><q-btn color="primary" label="Ver Receta" /></div>
+            <div class="col-4"><q-btn color="primary" label="Comentar" /></div>
           </div>
 
-          <!-- <div class="row">
-            <div class="col-4">{{ minutosAHora(receta.tiempoPreparacion) }}</div>
-            <div class="col-4">{{receta.porcion}}</div>
-          </div><br/>
-          <div class="row">
-            <div class="col-9"/>
-            <div class="col-3"><q-btn color="primary" label="Comentar" /></div>
-          </div> -->
         </q-card-main>
  
       </div>
