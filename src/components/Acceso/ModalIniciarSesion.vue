@@ -6,9 +6,9 @@
         <q-input stack-label="email" v-model="email"/>
         <q-input stack-label="password" type="password" v-model="password"/>
       </div>
-      
-      <q-btn
-        color="primary"
+      <div class="login-actions">
+        <q-btn
+        color="secondary"
         @click="closeModal"
         label="Cancelar"
       />
@@ -17,6 +17,7 @@
         @click="handleLogin"
         label="Aceptar"
       />
+      </div>
     </q-modal>
   </div>  
 </template>
@@ -45,7 +46,9 @@ export default {
   },
   watch: {
     loginError(message) {
-      alert(message)
+      if (message) {
+        this.$q.notify({ message, type: 'negative', position: top })
+      }
     },
     user(userData) {
       if (userData) {
@@ -57,11 +60,17 @@ export default {
 }
 </script>
 
-<style lang="scss">ç
-.login-modal {
-  .form-body {
-    padding: 20px 0;
-  }
+<style lang="css">
+.login-modal .form-body {
+  padding: 20px 0;
+}
+.login-actions {
+  width: 100%;
+  display: flex;
+  padding-top: 20px;
+}
+ .login-actions > .q-btn:first-child {
+  margin-right: 5px;
 }
 
 </style>
