@@ -12,13 +12,13 @@ export const login = ({ commit, state }, userData) => {
       .then(
         (response) => {
           console.log('res', response);
-          if (response.body.user && response.body.token) {
-            const { user } = response.body;
-            user.token = response.body.token;
+          if (response.data.user && response.data.token) {
+            const { user } = response.data;
+            user.token = response.data.token;
             commit('SET_USER', { user });
           } else {
-            let message = defaultErrorMessage
-            commit('SET_LOGIN_ERROR', { message })
+            let message = defaultErrorMessage;
+            commit('SET_LOGIN_ERROR', { message });
           }
         },
         (error) => {
@@ -33,5 +33,16 @@ export const login = ({ commit, state }, userData) => {
 }
 
 export const logout = ({ commit }) => {
+  console.log('bye!');
   commit('SET_USER', { user: null })
+}
+
+export const restoreUser = ({ commit, state }) => {
+  if (!state.user) {
+    console.log('intentando recuperar usuario de local storage');
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      commit('SET_USER', { user })
+    }
+  }
 }

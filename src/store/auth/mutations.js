@@ -4,6 +4,7 @@ export const mutations = {
     state.user = null;
     state.user = user;
     localStorage.setItem('user', JSON.stringify(user));
+    console.log('mutation done for user', user);
   },
   'SET_LOGIN_ERROR': function(state, { message }) {
     state.loginError = message;

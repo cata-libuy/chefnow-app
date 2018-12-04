@@ -45,7 +45,7 @@
             <div class="col-3"><q-btn color="primary" label="Comentar" /></div>
           </div> -->
         </q-card-main>
-
+ 
       </div>
       <br /><br />
     </q-page>
