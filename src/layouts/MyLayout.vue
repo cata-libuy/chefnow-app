@@ -1,49 +1,64 @@
 <template>
-  <q-layout view="lHh Lpr lFf"
-  >
+  <q-layout view="lHh Lpr lFf">
     <q-layout-header>
+      
       <q-toolbar
-        color = "black"
+        color = "tertiary"
         :glossy = "$q.theme === 'mat'"
-        :inverted = "$q.theme === 'ios'"
-      >
+        :inverted = "$q.theme === 'ios'">
+
         <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
           <q-icon name="account_box" />
-        </q-btn
-        >
+        </q-btn>
+
         <q-toolbar-title class="flex flex-center">
-          <div class="row">
-            <div class="col-sm-6"> <img src="assets/icon/chefHeader.png" alt="" width="45" height="45"> </div>
-            <div class="col-sm-6"> <font face = "Pacifico">Chef Now</font></div>
-          </div>
+          <router-link to="/" class="tituloML">Chef Now </router-link>
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
 
     <q-layout-drawer
       v-model="leftDrawerOpen"
-      :content-class="$q.theme === 'mat' ? 'bg-grey3' : null"
-      >
-      <q-list no-border link inset-delimiter>
-        <div><q-list-header>Usuario <br/> nombre.apellido@dominio.cl</q-list-header><br/><br/><br/>
+      :content-class="$q.theme === 'mat' ? 'bg-grey3' : null">
+
+      <q-list no-border link inset-delimiter class="fuenteML">
+        <div class="row">
+          <div class="col-1" />
+          <div class="col-10"><img src="https://www.socialtools.me/blog/wp-content/uploads/2016/04/foto-de-perfil.jpg" class="ImgresponsiveML" alt="Avatar"></div>
+          <div class="col-1" />
         </div>
-        <div>
-          <q-item-side icon="restaurant_menu"> Recetas </q-item-side><br/>
-          <q-item-side icon="person"> Perfil </q-item-side><br/>
-          <q-item-side icon="kitchen"> Despensa </q-item-side>
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        </div>
-        <div class="q-body-2">
-          <q-item-main label="Preferencias"/><br/>
-          <q-item-main label="Contáctanos"/><br/>
-          <q-item-main label="Cerrar Sesión"/><br/>
+        <div> 
+          nombre.apellido@dominio.cl
         </div>
       </q-list>
+      
+      <br />
+
+      <q-list separator>
+        <q-collapsible indent icon="restaurant_menu" label="Recetas" sublabel="">
+          <div><q-item-side icon="receipt"> <router-link to="/mis-recetas"> Mis Recetas </router-link></q-item-side></div>
+          <q-item-side icon="receipt"> <router-link to="/crear-receta"> Crear Receta </router-link></q-item-side>
+        </q-collapsible>
+
+        <q-collapsible indent icon="kitchen" label="Despensa" sublabel="">
+          <div><q-item-side icon="receipt"> <router-link to=""> Agregar Ingredientes </router-link></q-item-side></div>
+          <div><q-item-side icon="receipt"> <router-link to=""> Revisar Despensa </router-link></q-item-side></div>
+        </q-collapsible>
+      </q-list>
+
+      <q-collapsible indent icon="settings" label="Perfil">
+        <div><router-link to=""> Mi Cuenta </router-link></div>
+        <div><router-link to=""> Mis Prefeencias </router-link></div>
+        <div><router-link to=""> Contáctanos </router-link></div>
+        <div><router-link to=""> Cerrar Sesión </router-link></div>
+      </q-collapsible>
+
     </q-layout-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+    
   </q-layout>
 </template>
 
@@ -67,6 +82,23 @@ export default {
 .q-layout-page-container {
   background-image: url('../assets/Principal3.jpg');
   background-size: cover;
-  min-height: 90vw;
+  background-attachment: fixed;
 }
+
+.fuenteML {
+  font-size:medium;
+  text-align: center
+}
+
+.ImgresponsiveML {
+    width: 50%;
+    height: auto
+}
+
+.tituloML {
+  color:white;
+  font-family:pacifico;
+  text-decoration: none;
+}
+
 </style>

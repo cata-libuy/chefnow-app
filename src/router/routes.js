@@ -2,28 +2,44 @@ const routes = [{
         path: '/',
         component: () =>
             import ('layouts/MyLayout.vue'),
-        children: [
-            { path: '', component: () =>
-                    import ('pages/Index.vue') },
-        ],
+        children: [{
+            path: '',
+            component: () =>
+                import ('pages/Index.vue')
+        }, ],
     },
-    {
-        path: '/recetas',
-        component: () =>
-            import ('layouts/MyLayout.vue'),
-        children: [
-            { path: '', component: () =>
-                    import ('pages/ListaRecetas.vue') },
-        ],
-    },
+
     {
         path: '/crear-receta',
         component: () =>
             import ('layouts/MyLayout.vue'),
-        children: [
-            { path: '', component: () =>
-                    import ('pages/CrearReceta.vue') },
-        ],
+        children: [{
+            path: '',
+            component: () =>
+                import ('pages/CrearReceta.vue')
+        }, ],
+    },
+
+    {
+        path: '/ver-receta/:id',
+        component: () =>
+            import ('layouts/MyLayout.vue'),
+        children: [{
+            path: '',
+            component: () =>
+                import ('pages/VerReceta.vue')
+        }, ],
+    },
+
+    {
+        path: '/mis-recetas',
+        component: () =>
+            import ('layouts/MyLayout.vue'),
+        children: [{
+            path: '',
+            component: () =>
+                import ('pages/MisRecetas.vue')
+        }, ],
     },
 ];
 
