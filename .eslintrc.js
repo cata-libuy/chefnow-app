@@ -22,7 +22,7 @@ module.exports = {
   // add your custom rules here
   'rules': {
     'no-param-reassign': 0,
-
+    'linebreak-style': 2,
     'import/first': 0,
     'import/named': 2,
     'import/namespace': 2,

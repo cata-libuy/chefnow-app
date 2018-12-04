@@ -73,7 +73,8 @@ module.exports = function(ctx) {
                 'QFabAction',
                 'QBtnDropdown',
                 'QCollapsible',
-                'QUploader'
+                'QUploader',
+                'QModal'
             ],
             directives: [
                 'Ripple',

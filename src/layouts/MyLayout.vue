@@ -7,8 +7,8 @@
         :glossy = "$q.theme === 'mat'"
         :inverted = "$q.theme === 'ios'">
 
-        <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
-          <q-icon name="account_box" />
+        <q-btn flat dense round @click="handleAccountBtn" aria-label="Menu">
+          <q-icon :name="user ? 'menu' : 'account_box'" />
         </q-btn>
 
         <q-toolbar-title class="flex flex-center">
@@ -58,22 +58,48 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-    
+
+    <modal-iniciar-sesion :opened="loginModalOpen" :closeModal="hideLoginModal"/>
   </q-layout>
 </template>
 
 <script>
 import { openURL } from 'quasar';
+import { mapGetters, mapActions } from 'vuex';
+import ModalIniciarSesion from '../components/Acceso/ModalIniciarSesion'
 
 export default {
   name: 'MyLayout',
+  components: {
+    ModalIniciarSesion
+  },
   data() {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop,
+      loginModalOpen: false,
     };
   },
+  computed: {
+    ...mapGetters(['user']),
+  },
   methods: {
+    ...mapActions(['logout']),
     openURL,
+    handleAccountBtn() {
+      if (this.user) {
+        return this.toggleSideBar();
+      }
+      this.showLoginModal();
+    },
+    toggleSideBar() {
+      this.leftDrawerOpen = !this.leftDrawerOpen;
+    },
+    showLoginModal() {
+      this.loginModalOpen = true;
+    },
+    hideLoginModal() {
+      this.loginModalOpen = false;
+    }
   },
 };
 </script>

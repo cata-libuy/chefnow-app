@@ -5,8 +5,13 @@
 </template>
 
 <script>
+import settings from './config/settings';
+
 export default {
   name: 'App',
+  created() {
+    console.log('apuntando a ', settings.api);
+  }
 };
 </script>
 
