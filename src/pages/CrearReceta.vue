@@ -1,7 +1,7 @@
 <template>
 
   <q-page class="flex column justify-content">
-
+  <br /><br /><br /><br />
     <div class="flex column wrap justify-around formularioReceta" >
       <h4 class="self-center">Crear Receta</h4>
 
@@ -19,7 +19,7 @@
                  type="time"
                  v-model="receta.tiempoPreparacion"
                  numeric-keyboard-toggle/>
-        <span class="col-1"></span>
+        <span class="col-2"></span>
         <q-input class="col-5" value="0"
                  stack-label="Porciones"
                  v-model="receta.porcion"
@@ -36,13 +36,14 @@
                 float-label="Sube la foto de tu receta!"
                 :clearable="true"
                 ref="imagenReceta"
-                @uploaded="uploaded"/>
+                @uploaded="uploaded"/><br /><br />
+
 
       <q-btn class="self-center" icon="create"
              label="Guardar Receta"
              color="primary" @click="guardarReceta"/>
     </div>
-
+    <br />
   </q-page>
 </template>
 
@@ -101,7 +102,8 @@
     padding-right: 1.3em;
     padding-left: 1.3em;
     padding-bottom: 1.4em;
-    border-radius: 0.5em;
-    margin: 3%;
+    /* border-radius: 1em; */
+    /* margin: 3%; */
+    /* opacity: 0.8; */
   }
 </style>

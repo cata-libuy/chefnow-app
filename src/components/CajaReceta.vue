@@ -1,15 +1,15 @@
 <template>
 
-  <div class="flex column justify-around formularioReceta" >
+  <div class="formularioRecetaCR" >
       <q-card-title class="flex column center" >
         <div>
           {{receta.titulo}} <q-icon name="account_box" />
         </div>
         <div>
-          <img src="../assets/Principal5.jpg" class="CRImgResponsive">
+          <img src="../assets/Principal5.jpg" class="ImgResponsiveCR">
         </div>
         <div>
-          <q-rating slot="subtitle"  :max= "5" />
+          <q-rating slot="subtitle" :max= "5" />
         </div>
       </q-card-title>
 
@@ -20,18 +20,25 @@
       <q-card-actions>
         <q-btn flat round dense icon="access_time"> {{ receta.tiempoPreparacion }} </q-btn>
         <q-btn flat round dense icon="pie_chart"> {{ receta.porcion }} </q-btn>
-        <q-btn flat color="primary" label="Ver Receta" />
+        <q-btn flat color="primary">
+          <router-link :to="`ver-receta/${receta._id}`">
+            Ver Receta
+          </router-link>
+        </q-btn>
       </q-card-actions>
   </div>
 
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'CajaReceta',
   props: ['receta'],
-  created() {
-    console.log('recibí una receta', this.receta);
+  data() {
+    return {
+      recetas: []
+    };
   },
   methods: {
     minifyBody(text) {
@@ -42,14 +49,16 @@ export default {
 </script>
 
 <style>
-  .formularioReceta{
+  .formularioRecetaCR {
     background-color: #fdfbff;
-    padding: 0,5em;
-    border-radius: 0.5em;
-    margin: 10%;
+    margin-top: 5%;
+    /*border-radius: 1em;*/
+    /* opacity: 0.8; */
   }
-  .CRImgResponsive {
+  .ImgResponsiveCR {
     width: 100%;
     height: auto;
+    opacity: none;
   }
+
 </style>

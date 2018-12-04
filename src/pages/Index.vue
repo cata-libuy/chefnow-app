@@ -17,7 +17,7 @@
   text-align: center;
   font-size: medium;
 }
-.col{
+.col {
   text-align: center;
 }
 </style>

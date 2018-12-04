@@ -2,8 +2,8 @@
   <div class="lista-recetas">
     <caja-receta 
     v-for="receta in recetas"
-    v-bind:key="receta.tiempoPreparacion"
-    :receta="receta"></caja-receta>
+    v-bind:key="receta._id"
+    :receta="receta" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import CajaReceta from '../components/CajaReceta.vue';
 export default {
   name: 'ListaRecetas',
   components: {
-    CajaReceta
+  CajaReceta,
   },
 
   props: ['recetas'],

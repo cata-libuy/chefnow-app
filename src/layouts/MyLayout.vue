@@ -12,7 +12,7 @@
         </q-btn>
 
         <q-toolbar-title class="flex flex-center">
-          <font face = "Pacifico"> Chef Now </font>
+          <router-link to="/" class="tituloML">Chef Now </router-link>
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
@@ -21,13 +21,13 @@
       v-model="leftDrawerOpen"
       :content-class="$q.theme === 'mat' ? 'bg-grey3' : null">
 
-      <q-list no-border link inset-delimiter class="fuente">
+      <q-list no-border link inset-delimiter class="fuenteML">
         <div class="row">
           <div class="col-1" />
-          <div class="col-10"><img src="https://www.socialtools.me/blog/wp-content/uploads/2016/04/foto-de-perfil.jpg" class="Imgresponsive" alt="Avatar"></div>
+          <div class="col-10"><img src="https://www.socialtools.me/blog/wp-content/uploads/2016/04/foto-de-perfil.jpg" class="ImgresponsiveML" alt="Avatar"></div>
           <div class="col-1" />
         </div>
-        <div class="fuente"> 
+        <div> 
           nombre.apellido@dominio.cl
         </div>
       </q-list>
@@ -36,7 +36,7 @@
 
       <q-list separator>
         <q-collapsible indent icon="restaurant_menu" label="Recetas" sublabel="">
-          <div><q-item-side icon="receipt"> <router-link to=""> Mis Recetas </router-link></q-item-side></div>
+          <div><q-item-side icon="receipt"> <router-link to="/mis-recetas"> Mis Recetas </router-link></q-item-side></div>
           <q-item-side icon="receipt"> <router-link to="/crear-receta"> Crear Receta </router-link></q-item-side>
         </q-collapsible>
 
@@ -52,11 +52,6 @@
         <div><router-link to=""> Contáctanos </router-link></div>
         <div><router-link to=""> Cerrar Sesión </router-link></div>
       </q-collapsible>
-
-       <!-- <div><q-item-side icon="restaurant_menu"> <router-link to=""> Recetas </router-link></q-item-side></div><br />
-        <div><q-item-side icon="person"> <router-link to=""> Perfil </router-link></q-item-side></div><br />
-        <div><q-item-side icon="kitchen"> <router-link to=""> Despensa </router-link></q-item-side></div>
-      </q-list>-->
 
     </q-layout-drawer>
 
@@ -87,17 +82,23 @@ export default {
 .q-layout-page-container {
   background-image: url('../assets/Principal3.jpg');
   background-size: cover;
-  background-attachment: fixed
+  background-attachment: fixed;
 }
 
-.fuente {
+.fuenteML {
   font-size:medium;
   text-align: center
 }
 
-.Imgresponsive {
+.ImgresponsiveML {
     width: 50%;
     height: auto
+}
+
+.tituloML {
+  color:white;
+  font-family:pacifico;
+  text-decoration: none;
 }
 
 </style>
