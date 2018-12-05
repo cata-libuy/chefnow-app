@@ -89,4 +89,7 @@ export default {
   .text-faded{
     text-align: justify;
   }
+  .q-card-title{
+    color: black !important;
+  }
 </style>

@@ -16,4 +16,10 @@ export default {
 </script>
 
 <style>
+  .q-if-label{
+    color: white !important;
+  }
+  .q-input-target{
+    color: white !important;
+  }
 </style>

@@ -24,9 +24,6 @@
 .col {
   text-align: center;
 }
-.q-if-label {
-  color: white !important;
-}
 </style>
 
 <script>
